@@ -1,5 +1,5 @@
 CXX=g++
-CFLAGS=-g -std=c++17 -DLOCAL -Wall -O0 -I./../ac-library
+CFLAGS=-g -std=c++17 -DLOCAL -Wall -O0 -I./../ac-library -fsanitize=undefined -D_GLIBCXX_DEBUG
 
 %: %.cpp
 	$(CXX) $(CFLAGS) -o $@ $<
