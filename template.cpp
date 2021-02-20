@@ -20,7 +20,7 @@ constexpr ll LINF = numeric_limits<ll>::max();
 // repeat
 #define REP(i, n) for (ll i = 0; i < ll(n); ++i)
 #define REP3(i, m, n) for (ll i = (m); i < ll(n); ++i)
-#define REPR(i, n) for (ll i = ll(n) - 1; i >= 0; ++i)
+#define REPR(i, n) for (ll i = ll(n) - 1; i >= 0; --i)
 #define REP3R(i, m, n) for (ll i = (n) - 1; i >= ll(m); --i)
 
 // container
