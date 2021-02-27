@@ -8,5 +8,5 @@ fi
 
 for bn in $@; do
     fn=$bn".cpp"
-    cat ../template.cpp > $fn
+    cat ../templates/main.cpp > $fn
 done
