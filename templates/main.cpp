@@ -26,10 +26,14 @@ constexpr ll LINF = numeric_limits<ll>::max();
 // container
 #define ALL(x) (x).begin(), (x).end()
 #define EACH(e, x) for (auto &&e : x)
-inline ll SZ(auto &x) {return (ll) x.size();}
-void sort_all(auto &x) {sort(x.begin(), x.end());}
-void reverse_all(auto &x) {reverse(x.begin(), x.end());}
-void print_all(auto &x, char delimiter = '\n') {for (auto &&e : x) cout << e << delimiter;}
+template <typename T>
+inline ll SZ(T &x) {return (ll) x.size();}
+template <typename T>
+void sort_all(T &x) {sort(x.begin(), x.end());}
+template <typename T>
+void reverse_all(T &x) {reverse(x.begin(), x.end());}
+template <typename T>
+void print_all(T &x, char delimiter = '\n') {for (auto &&e : x) cout << e << delimiter;}
 
 #define FI first
 #define SE second
@@ -37,8 +41,10 @@ void print_all(auto &x, char delimiter = '\n') {for (auto &&e : x) cout << e << 
 // local
 #ifdef LOCAL
 #define ASSERT(x) assert(x)
+#define DEBUG(x) cout << #x << " : " << x << "\n"
 #else
 #define ASSERT(x) 0
+#define DEBUG(x) 0
 #endif
 
 /////////////////////////////////////////////////
