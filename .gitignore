@@ -3,6 +3,7 @@ workspace
 !workspace/Makefile
 !workspace/reset.sh
 *.swp
+.DS_Store
 
 ### https://raw.github.com/github/gitignore/218a941be92679ce67d0484547e3e142b2f5f6f0/C++.gitignore
 
