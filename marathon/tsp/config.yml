@@ -1,0 +1,17 @@
+testcases:
+  small : 
+    num_nodes : 10
+    num_cases : 10
+    height : 100
+    width : 100
+  middle :
+    num_nodes : 20
+    num_cases : 10
+    height : 100
+    width : 100
+  large :
+    num_nodes : 50
+    num_cases : 10
+    height : 100
+    width : 100
+  
