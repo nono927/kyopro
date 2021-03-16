@@ -26,22 +26,24 @@ def read_result(filename, n):
             ret.append(int(x))
     return ret
 
-def visualize_path(xs, ys, path):
+def visualize_route(xs, ys, ps, save_path):
     assert(len(xs) == len(ys))
-    assert(len(xs) == len(path))
+    assert(len(xs) == len(ps))
 
+    plt.figure()
     plt.scatter(xs, ys)
     for i in range(len(xs)):
         plt.annotate(i, xy=(xs[i], ys[i]))
         plt.plot([xs[i-1], xs[i], xs[i]], [ys[i-1], ys[i-1], ys[i]])
-    plt.show()
+    plt.savefig(save_path)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--testcase", type=str)
     parser.add_argument("--result", type=str)
+    parser.add_argument("--save_path", type=str)
     args = parser.parse_args()
 
     xs, ys = read_testcase(args.testcase)
-    path = read_result(args.result, len(xs))
-    visualize_path(xs, ys, path)
+    ps = read_result(args.result, len(xs))
+    visualize_path(xs, ys, ps, args.save_path)
