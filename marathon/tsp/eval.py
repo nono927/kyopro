@@ -10,6 +10,7 @@ from scripts.score import *
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--testtype", type=str, default="small")
+    parser.add_argument("--exact", action="store_true")
     args = parser.parse_args()
 
     dirname = os.path.join("testcases", args.testtype)
@@ -24,7 +25,11 @@ if __name__ == "__main__":
         for i in range(10):
             case_name = os.path.join(dirname, "case{}.txt".format(i))
             out_name = os.path.join(outdir, "result{}.txt".format(i))
-            subprocess.run(["build/src/main", case_name, out_name])
+
+            if args.exact:
+                subprocess.run(["build/src/main", "--input", case_name, "--output", out_name, "--exact"])
+            else:
+                subprocess.run(["build/src/main", "--input", case_name, "--output", out_name])
 
             xs, ys = read_testcase(case_name)
             ps = read_result(out_name, len(xs))

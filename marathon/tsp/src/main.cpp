@@ -2,21 +2,37 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <getopt.h>
 #include "tsp.hpp"
 
 using namespace std;
 
 int main(int argc, char **argv) {
-    if (argc < 3) {
-        cerr << "no input and output filename" << endl;
-        return 1;
+    bool is_exact = false;
+    string fname_in, fname_out;
+
+    auto optstring = "";
+    const struct option longopts[] = {
+        {"input", required_argument, 0, 'i'},
+        {"output", required_argument, 0, 'o'},
+        {"exact", no_argument, 0, 'e'},
+    };
+    opterr = 0;
+    int c, longindex = 0;
+    while ((c = getopt_long(argc, argv, optstring, longopts, &longindex)) != -1) {
+        if (c == 'i') {
+            fname_in = string(optarg);
+        } else if (c == 'o') {
+            fname_out = string(optarg);
+        } else if (c == 'e') {
+            is_exact = true;
+        }
     }
 
     // open input file
-    string fname_in(argv[1]);
     ifstream ifs(fname_in);
     if (!ifs) {
-        cerr << "cannot open file" << endl;
+        cerr << "cannot open input file" << endl;
         return 1;
     }
 
@@ -29,13 +45,13 @@ int main(int argc, char **argv) {
     }
 
     // solve tsp
-    auto path = tsp_exact(xs, ys);
+    auto &tsp = is_exact ? tsp_exact : tsp_heuristic;
+    auto path = tsp(xs, ys);
 
     // write result
-    string fname_out(argv[2]);
     ofstream ofs(fname_out);
     if (!ofs) {
-        cerr << "cannot open file" << endl;
+        cerr << "cannot open output file" << endl;
         return 1;
     }
 
