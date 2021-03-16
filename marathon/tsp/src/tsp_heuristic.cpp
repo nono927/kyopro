@@ -1,6 +1,7 @@
 #include <vector>
 #include <cmath>
 #include <limits>
+#include <iostream>
 
 #include <dice.hpp>
 #include <timer.hpp>
@@ -10,6 +11,17 @@ const auto INF = numeric_limits<int>::max();
 
 int dist(int x0, int x1, int y0, int y1) {
     return abs(x0 - x1) + abs(y0 - y1);
+}
+
+int score(vector<int> &ps, vector<int> &xs, vector<int> &ys) {
+    const int n = ps.size();
+    int score = dist(xs[ps[0]], xs[ps[n-1]], ys[ps[0]], ys[ps[n-1]]);
+    for (int i = 0; i < n - 1; ++i) {
+        int u = ps[i];
+        int v = ps[i+1];
+        score += dist(xs[u], xs[v], ys[u], ys[v]);
+    }
+    return score;
 }
 
 int nearest_neighbor(int tmp, vector<bool> &used, vector<int> &xs, vector<int> &ys) {
@@ -28,6 +40,8 @@ int nearest_neighbor(int tmp, vector<bool> &used, vector<int> &xs, vector<int> &
 }
 
 vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
+    Timer timer;
+
     const int n = xs.size();
     vector<int> ret(n);
     vector<bool> used(n);
@@ -37,6 +51,31 @@ vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
         used[tmp] = true;
         tmp = nearest_neighbor(tmp, used, xs, ys);
         ret[i] = tmp;
+    }
+
+    // 2-opt
+    Dice dice(n);
+    const double time_limit = 500;
+    while (timer.time() < time_limit) {
+        int i = dice();
+        int j = dice();
+        if (i == j) continue;
+        if (i > j) swap(i, j);
+
+        int p = (i == 0) ? ret[n-1] : ret[i-1];
+        int q = ret[i];
+        int r = ret[j];
+        int s = (j == n) ? ret[0] : ret[j+1];
+        int diff = dist(xs[p], xs[r], ys[p], ys[r])
+                + dist(xs[q], xs[s], ys[q], ys[s])
+                - dist(xs[p], xs[q], ys[p], ys[q])
+                - dist(xs[r], xs[s], ys[r], ys[s]);
+        if (diff < 0) {
+            while (i < j) {
+                swap(ret[i], ret[j]);
+                ++i; --j;
+            }
+        }
     }
 
     return ret;
