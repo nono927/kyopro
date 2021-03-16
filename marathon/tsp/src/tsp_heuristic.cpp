@@ -40,8 +40,6 @@ int nearest_neighbor(int tmp, vector<bool> &used, vector<int> &xs, vector<int> &
 }
 
 vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
-    Timer timer;
-
     const int n = xs.size();
     vector<int> ret(n);
     vector<bool> used(n);
@@ -55,7 +53,10 @@ vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
 
     // 2-opt
     Dice dice(n);
-    const double time_limit = 500;
+    const double time_limit = 1000;
+    const double tstart = 50;
+    const double tend = 1;
+    Timer timer;
     while (timer.time() < time_limit) {
         int i = dice();
         int j = dice();
@@ -70,7 +71,10 @@ vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
                 + dist(xs[q], xs[s], ys[q], ys[s])
                 - dist(xs[p], xs[q], ys[p], ys[q])
                 - dist(xs[r], xs[s], ys[r], ys[s]);
-        if (diff < 0) {
+        
+        double t = tstart + (tend - tstart) * timer.time() / time_limit;
+        double prob = exp(-diff / t);
+        if ((1.0 * rand() / RAND_MAX) < prob) {
             while (i < j) {
                 swap(ret[i], ret[j]);
                 ++i; --j;
