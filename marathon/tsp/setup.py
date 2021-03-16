@@ -5,7 +5,7 @@ import numpy as np
 
 from scripts.gen_testcase import gen_tsp_testcase
 
-testcase_root_dir = "sample"
+testcase_root_dir = "testcases"
 
 def gen_testcases(testname, num_nodes, num_cases, h, w):
     dirname = os.path.join(testcase_root_dir, testname)
