@@ -5,6 +5,7 @@
 
 #include <dice.hpp>
 #include <timer.hpp>
+#include <annealer.hpp>
 
 using namespace std;
 const auto INF = numeric_limits<int>::max();
@@ -57,6 +58,7 @@ vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
     const double tstart = 50;
     const double tend = 1;
     Timer timer;
+    Annealer annealer(tstart, tend, time_limit);
     while (timer.time() < time_limit) {
         int i = dice();
         int j = dice();
@@ -72,9 +74,7 @@ vector<int> tsp_heuristic(vector<int> &xs, vector<int> &ys) {
                 - dist(xs[p], xs[q], ys[p], ys[q])
                 - dist(xs[r], xs[s], ys[r], ys[s]);
         
-        double t = tstart + (tend - tstart) * timer.time() / time_limit;
-        double prob = exp(-diff / t);
-        if ((1.0 * rand() / RAND_MAX) < prob) {
+        if (annealer.modify(-diff, timer.time())) {
             while (i < j) {
                 swap(ret[i], ret[j]);
                 ++i; --j;
