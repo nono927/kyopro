@@ -24,7 +24,7 @@ if __name__ == "__main__":
         for i in range(10):
             case_name = os.path.join(dirname, "case{}.txt".format(i))
             out_name = os.path.join(outdir, "result{}.txt".format(i))
-            subprocess.run(["build/main", case_name, out_name])
+            subprocess.run(["build/src/main", case_name, out_name])
 
             xs, ys = read_testcase(case_name)
             ps = read_result(out_name, len(xs))
