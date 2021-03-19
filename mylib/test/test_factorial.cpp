@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "factorial.hpp"
 
-TEST(Factoral, Case1) {
+TEST(Factorial, Case1) {
     int n = 10;
     long long MOD = 13;
     auto [fact, ifact] = calc_factorial(n, MOD);
@@ -19,7 +19,7 @@ TEST(Factoral, Case1) {
     }
 }
 
-TEST(Factoral, Case2) {
+TEST(Factorial, Case2) {
     int n = 20;
     long long MOD = 998244353;
     auto [fact, ifact] = calc_factorial(n, MOD);
@@ -32,7 +32,7 @@ TEST(Factoral, Case2) {
     }
 }
 
-TEST(Factoral, Case3) {
+TEST(Factorial, Case3) {
     int n = 20;
     long long MOD = 1e9 + 7;
     auto [fact, ifact] = calc_factorial(n, MOD);
