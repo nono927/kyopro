@@ -3,7 +3,7 @@
 
 TEST(Factoral, Case1) {
     int n = 10;
-    long long MOD = 7;
+    long long MOD = 13;
     auto [fact, ifact] = calc_factorial(n, MOD);
 
     ASSERT_EQ(fact.size(), n);
