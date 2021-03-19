@@ -15,3 +15,7 @@ add_test(NAME test_trie_tree COMMAND test_trie_tree)
 add_executable(test_cht test_cht.cpp)
 target_link_libraries(test_cht gtest_main)
 add_test(NAME test_cht COMMAND test_cht)
+
+add_executable(test_factorial test_factorial.cpp)
+target_link_libraries(test_factorial gtest_main)
+add_test(NAME test_factorial COMMAND test_factorial)
