@@ -19,3 +19,7 @@ add_test(NAME test_cht COMMAND test_cht)
 add_executable(test_factorial test_factorial.cpp)
 target_link_libraries(test_factorial gtest_main)
 add_test(NAME test_factorial COMMAND test_factorial)
+
+add_executable(test_prime_factorization test_prime_factorization.cpp)
+target_link_libraries(test_prime_factorization gtest_main)
+add_test(NAME test_prime_factorization COMMAND test_prime_factorization)
