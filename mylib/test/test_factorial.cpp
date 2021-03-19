@@ -8,7 +8,12 @@ TEST(Factoral, Case1) {
 
     ASSERT_EQ(fact.size(), n);
     ASSERT_EQ(ifact.size(), n);
-    
+
+    ASSERT_EQ(fact[0], 1);
+    ASSERT_EQ(fact[1], 1);
+    ASSERT_EQ(fact[2], 2);
+    ASSERT_EQ(fact[3], 6);
+
     for (int i = 0; i < n; ++i) {
         ASSERT_EQ(fact[i] * ifact[i] % MOD, 1);
     }
