@@ -10,3 +10,5 @@ window.MathJax = {
       processHtmlClass: "arithmatex"
     }
   };
+
+hljs.initHighlighting()
