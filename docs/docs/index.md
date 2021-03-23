@@ -1,17 +1,18 @@
-# Welcome to MkDocs
+# kyopro library docs
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+自作の競技プログラミング用ライブラリのドキュメントです．実装は[こちら](https://github.com/nono927/kyopro)
 
-## Commands
+## アルゴリズム
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+* [`cht.hpp`](algorithm/cht.md) - Convex Hull Trick
+* [`factorial.hpp`](algorithm/factorial.md) - 階乗
+* [`matrix.hpp`](algorithm/matrix.md) - 行列
+* [`mindist.hpp`](algorithm/mindist.md) - 単一始点最短経路
+* [`prime_factorization.hpp`](algorithm/prime_factorization.md) - 素因数分解
+* [`trie_tree.hpp`](algorithm/trie_tree.md) - Trie木
 
-## Project layout
+## マラソン
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* [`annealer.hpp`](marathon/annealer.md) - 焼きなましの温度管理
+* [`dice.hpp`](marathon/dice.md) - 整数の一様乱数
+* [`timer.hpp`](marathon/timer.md) - 時間管理
