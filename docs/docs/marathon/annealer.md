@@ -19,13 +19,13 @@ $$
 Annealer::Annealer(double temp_start, double temp_end, double time_limit);
 ```
 
-初期温度 $T_0$ を `temp_start`，探索終了時の温度 $T_1$ を `temp_end`，探索時間を `time_limit` として初期化する．
+初期温度 $T_0$ を `temp_start`，探索終了時の温度 $T_1$ を `temp_end`，探索時間 $t_\mathrm{limit}$ を `time_limit` として初期化する．
 温度は時刻に対して線形に変化し，探索終了時刻以降は一定値 $T_1$ をとる．
 
 $$
-T = \cases{
-    T_0 + (T_1 - T_0) \frac{t}{T_1} & $(0 \leq t \leq T_1)$ \cr
-    T_1 & $(T_1 \leq t)$
+T(t) = \cases{
+    T_0 + (T_1 - T_0) \frac{t}{T_1} & $(0 \leq t \leq t_\mathrm{limit})$ \cr
+    T_1 & $(t_\mathrm{limit} \leq t)$
 }
 $$
 
