@@ -15,8 +15,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: test
       run: |
-        mkdir mylib/build
-        cd mylib/build
+        mkdir algorithm/build
+        cd algorithm/build
         cmake ..
         make
         make test
