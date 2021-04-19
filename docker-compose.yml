@@ -1,5 +1,5 @@
 version: '3'
 services:
   dev:
-    build: .
-    image: kyopro/dev
+    build: ./context
+    image: nono927/kyopro
