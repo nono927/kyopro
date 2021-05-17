@@ -27,3 +27,7 @@ add_test(NAME test_prime_factorization COMMAND test_prime_factorization)
 add_executable(test_compressor test_compressor.cpp)
 target_link_libraries(test_compressor gtest_main)
 add_test(NAME test_compressor COMMAND test_compressor)
+
+add_executable(test_lca test_lca.cpp)
+target_link_libraries(test_lca gtest_main)
+add_test(NAME test_lca COMMAND test_lca)

@@ -11,6 +11,7 @@
 * [`prime_factorization.hpp`](algorithm/prime_factorization.md) - 素因数分解
 * [`trie_tree.hpp`](algorithm/trie_tree.md) - Trie木
 * [`compressor.hpp`](algorithm/compressor.md) - 座標圧縮
+* [`lca.hpp`](algorithm/lca.md) - LCA
 
 ## マラソン
 
