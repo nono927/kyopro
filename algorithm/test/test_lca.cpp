@@ -16,6 +16,6 @@ TEST(TestLCA, Tree) {
     ASSERT_EQ(lca.lca(1,  8), 0);
     ASSERT_EQ(lca.lca(2,  3), 1);
     ASSERT_EQ(lca.lca(4,  7), 0);
-    ASSERT_EQ(lca.lca(6,  6), 0);
+    ASSERT_EQ(lca.lca(6,  6), 6);
     ASSERT_EQ(lca.lca(9, 10), 8);
 }
